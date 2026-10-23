@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>My Repo</title>
+<style>
+  :root { --tint: #2f6fed; }
+  * { box-sizing: border-box; }
+  body { margin:0; font-family:-apple-system,BlinkMacSystemFont,"PingFang SC",sans-serif;
+         background:#f5f6f8; color:#1c1c1e; }
+  .wrap { max-width:640px; margin:0 auto; padding:32px 20px 48px; }
+  header { text-align:center; margin-bottom:28px; }
+  header img { width:96px; height:96px; border-radius:22px; }
+  h1 { margin:14px 0 6px; font-size:26px; }
+  .sub { color:#6b6b70; font-size:14px; }
+  a.add { display:inline-block; margin-top:18px; padding:12px 26px; border-radius:12px;
+          background:var(--tint); color:#fff; text-decoration:none; font-weight:600; }
+  .card { background:#fff; border-radius:16px; padding:16px 18px; margin-bottom:14px;
+          box-shadow:0 1px 3px rgba(0,0,0,.06); }
+  .card h3 { margin:0 0 4px; font-size:17px; }
+  .card p { margin:0; color:#6b6b70; font-size:14px; line-height:1.5; }
+  code { background:#eef0f4; padding:2px 6px; border-radius:6px; font-size:13px; }
+  footer { text-align:center; color:#9a9aa0; font-size:12px; margin-top:32px; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <img src="CydiaIcon.png" alt="repo icon">
+    <h1>My Repo</h1>
+    <div class="sub">个人 iOS 插件源</div>
+    <a class="add" id="addBtn" href="#">添加到包管理器</a>
+  </header>
+
+  <div class="card">
+    <h3>源地址</h3>
+    <p>在 Sileo / Zebra / Cydia 中添加：<br><code id="repoUrl">https://USERNAME.github.io/REPO</code></p>
+  </div>
+
+  <div class="card">
+    <h3>信任签名</h3>
+    <p>如果提示「不受信任」，请下载并安装 <a href="repo-public.key">repo-public.key</a>。</p>
+  </div>
+
+  <footer>Powered by GitHub Pages</footer>
+</div>
+
+<script>
+  // 自动填入当前地址，并把按钮指向 sileo:// 协议
+  var url = location.href.replace(/\/$/, '');
+  document.getElementById('repoUrl').textContent = url;
+  document.getElementById('addBtn').href = 'sileo://source/' + encodeURIComponent(url);
+</script>
+</body>
+</html>
